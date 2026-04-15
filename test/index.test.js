@@ -14,7 +14,7 @@ describe('Weather Alerts App - Input clearing', () => {
     fetchMock = jest.fn().mockResolvedValue({
       ok: true,
       status: 200,
-      json: async () => ({ title: "Weather Alerts", features: [] })
+      json: async () => ({ title: "Current watches, warnings, and advisories for California", features: [] })
     })
     global.fetch = fetchMock
     
@@ -49,7 +49,7 @@ describe('Weather Alerts App - Input clearing', () => {
       ok: true,
       status: 200,
       json: async () => ({
-        title: "Weather Alerts",
+        title: "Current watches, warnings, and advisories for New York",
         features: [
           { properties: { headline: "Flood warning in your area" }},
           { properties: { headline: "Tornado watch for the region" }}
@@ -66,7 +66,7 @@ describe('Weather Alerts App - Input clearing', () => {
     await new Promise(resolve => setTimeout(resolve, 0))
 
     const displayDiv = container.querySelector('#alerts-display')
-    expect(displayDiv).toHaveTextContent('Weather Alerts: 2')
+    expect(displayDiv).toHaveTextContent('Current watches, warnings, and advisories for New York: 2')
     expect(displayDiv).toHaveTextContent('Flood warning in your area')
     expect(displayDiv).toHaveTextContent('Tornado watch for the region')
 
@@ -74,7 +74,7 @@ describe('Weather Alerts App - Input clearing', () => {
       ok: true,
       status: 200,
       json: async () => ({
-        title: "Weather Alerts",
+        title: "Current watches, warnings, and advisories for Minnesota",
         features: [
           { properties: { headline: "Flood warning in your area" }},
           { properties: { headline: "Air quality alert in your area" }},
@@ -89,7 +89,7 @@ describe('Weather Alerts App - Input clearing', () => {
 
     await new Promise(resolve => setTimeout(resolve, 0))
 
-    expect(displayDiv).toHaveTextContent('Weather Alerts: 4')
+    expect(displayDiv).toHaveTextContent('Current watches, warnings, and advisories for Minnesota: 4')
     expect(displayDiv).toHaveTextContent('Flood warning in your area')
     expect(displayDiv).toHaveTextContent('Air quality alert in your area')
     expect(displayDiv).toHaveTextContent('Severe thunderstorm warning in your area')
@@ -158,7 +158,7 @@ describe('Weather Alerts App - Input clearing', () => {
       ok: true,
       status: 200,
       json: async () => ({
-        title: "Weather Alerts",
+        title: "Current watches, warnings, and advisories for Florida",
         features: [
           { properties: { headline: "Heat advisory in your area" } }
         ]
